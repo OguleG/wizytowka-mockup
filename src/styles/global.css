@@ -5,15 +5,16 @@
   --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Figtree", ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #0c1c24;
-  --color-ink-soft: #1a3340;
-  --color-sea: #1f6f78;
-  --color-sea-bright: #2a8f96;
-  --color-foam: #e8f0f2;
-  --color-mist: #f3f7f8;
-  --color-brass: #a67c3a;
-  --color-brass-hot: #c4923f;
-  --color-steel: #5a727c;
+  /* Deep ocean blue system */
+  --color-ink: #061530;
+  --color-ink-soft: #122a4d;
+  --color-sea: #1e5aab;
+  --color-sea-bright: #3d7fd4;
+  --color-foam: #e9f0fa;
+  --color-mist: #f2f6fc;
+  --color-signal: #2b74d4;
+  --color-signal-hot: #4a8fe0;
+  --color-steel: #5b7190;
 }
 
 @layer base {
@@ -29,7 +30,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-sea) 35%, white);
+    background: color-mix(in oklab, var(--color-sea) 32%, white);
     color: var(--color-ink);
   }
 }
@@ -82,15 +83,6 @@
   50% {
     transform: translateY(6px);
     opacity: 1;
-  }
-}
-
-@keyframes image-zoom {
-  from {
-    transform: scale(1.08);
-  }
-  to {
-    transform: scale(1);
   }
 }
 
@@ -164,7 +156,7 @@
   top: 1.75rem;
   bottom: 1.75rem;
   width: 2px;
-  background: var(--color-brass);
+  background: var(--color-sea-bright);
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -173,7 +165,7 @@
 @media (min-width: 640px) {
   .service-row:hover {
     padding-left: 1.25rem;
-    background: color-mix(in oklab, var(--color-sea) 5%, transparent);
+    background: color-mix(in oklab, var(--color-sea) 7%, transparent);
   }
 
   .service-row:hover::before {
@@ -197,18 +189,27 @@
 }
 
 .site-header.is-scrolled {
-  background-color: color-mix(in oklab, var(--color-ink) 82%, transparent);
+  background-color: color-mix(in oklab, var(--color-ink) 86%, transparent);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid color-mix(in oklab, white 12%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--color-sea-bright) 28%, transparent);
 }
 
 .grain {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.07;
+  opacity: 0.06;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.blue-wash {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 80%, color-mix(in oklab, var(--color-sea) 45%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 20%, color-mix(in oklab, var(--color-sea-bright) 28%, transparent), transparent 65%);
 }
 
 @media (prefers-reduced-motion: reduce) {
