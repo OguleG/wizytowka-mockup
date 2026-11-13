@@ -1,11 +1,245 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const services = [
+  {
+    title: 'Vessel inspections',
+    text: 'Technical condition, pre-purchase, pre-chartering, and pre-docking inspections - clear findings before you commit.',
+  },
+  {
+    title: 'Dry-dock & yard management',
+    text: 'Shipyard repair specifications, dry-dock and major repair planning to flag and class rules, yard selection, quotation negotiation, and full docking supervision with daily reports.',
+  },
+  {
+    title: 'Sale & purchase',
+    text: 'Practical assistance when buying or selling vessels - inspection insight and technical support through the deal.',
+  },
+  {
+    title: 'Surveys & insurance claims',
+    text: 'Hull and machinery damage inspections, insurance claim support, on-hire / off-hire surveys, and bunker surveys.',
+  },
+  {
+    title: 'Purchasing',
+    text: 'Spare parts, marine oil, filters, and repair teams (subcontractors) sourced and coordinated for the job.',
+  },
+  {
+    title: 'Steel & piping works',
+    text: 'All kinds of metal steel works, piping including galvanizing or ceramic coating, and steel thickness measurement with class approval.',
+  },
+  {
+    title: 'Marine engines',
+    text: 'Repair, overhauling, and adjustment of main and auxiliary engines, plus regeneration of cylinder heads, liners, pistons, pumps, and other parts.',
+  },
+  {
+    title: 'Hydraulics',
+    text: 'Hydraulic system repairs and supply of all kinds of hydraulic seals.',
+  },
+  {
+    title: 'Electrical & electronics',
+    text: 'Vessel electronics (MPC cards, AVR and similar), electrical repairs, and rewind of electric motors and generators.',
+  },
+  {
+    title: 'Refrigeration, AC & transport',
+    text: 'Refrigerator and AC system inspections and repair, transportation, and many more services across the vessel.',
+  },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'Inspect & specify',
+    text: 'We assess condition, prepare repair specs, and plan dry-docks and major works to flag and class rules.',
+  },
+  {
+    n: '02',
+    title: 'Source & negotiate',
+    text: 'Yard selection, quotations, spare parts, oils, filters, and subcontractors - aligned to scope and budget.',
+  },
+  {
+    n: '03',
+    title: 'Supervise & report',
+    text: 'On-site supervision of docking and repairs with daily reports until the vessel is ready for service.',
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <header class="absolute inset-x-0 top-0 z-20">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-8">
+      <a href="/" class="font-display text-lg font-extrabold tracking-[0.08em] text-white md:text-xl">
+        C-TECH
+      </a>
+      <nav class="hidden items-center gap-8 text-sm font-medium text-white/85 sm:flex">
+        <a href="#services" class="transition hover:text-white">Services</a>
+        <a href="#approach" class="transition hover:text-white">Approach</a>
+        <a href="#contact" class="rounded-sm bg-white/15 px-4 py-2 text-white backdrop-blur-sm transition hover:bg-white/25">
+          Contact
+        </a>
+      </nav>
+      <a
+        href="#contact"
+        class="text-sm font-medium text-white/90 sm:hidden"
+      >
+        Contact
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero: one composition  -  brand, headline, line, CTA, full-bleed image -->
+    <section class="relative min-h-[100svh] overflow-hidden bg-ink text-white">
+      <div
+        class="anim-drift absolute inset-[-4%] bg-cover bg-center"
+        style="background-image: url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2400&q=80');"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/70 to-ink/35"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-6 pb-16 pt-28 md:px-8 md:pb-24">
+        <p class="anim-rise font-display text-4xl font-extrabold tracking-[0.12em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          C-TECH
+        </p>
+        <h1 class="anim-rise anim-rise-delay-1 mt-5 max-w-xl font-display text-2xl font-bold leading-tight tracking-tight text-foam sm:text-3xl md:text-4xl">
+          Full ship service - from inspection to dry dock and repair.
+        </h1>
+        <p class="anim-rise anim-rise-delay-2 mt-5 max-w-md text-base leading-relaxed text-white/75 sm:text-lg">
+          Inspections, yard planning, steel and engine works, electrics, purchasing, and supervision with daily reports.
+        </p>
+        <div class="anim-rise anim-rise-delay-3 mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="#contact"
+            class="inline-flex items-center bg-brass px-6 py-3 text-sm font-semibold tracking-wide text-ink transition hover:bg-brass-hot"
+          >
+            Request a quotation
+          </a>
+          <a
+            href="#services"
+            class="inline-flex items-center border border-white/35 px-6 py-3 text-sm font-semibold tracking-wide text-white transition hover:border-white hover:bg-white/10"
+          >
+            View services
+          </a>
+        </div>
+
+        <div class="anim-pulse-line mt-14 h-px w-full max-w-xs bg-gradient-to-r from-sea-bright via-white/50 to-transparent" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="relative bg-mist">
+      <div
+        class="pointer-events-none absolute inset-0 opacity-60"
+        style="background:
+          radial-gradient(ellipse 80% 50% at 100% 0%, color-mix(in oklab, var(--color-sea) 12%, transparent), transparent),
+          radial-gradient(ellipse 60% 40% at 0% 100%, color-mix(in oklab, var(--color-brass) 8%, transparent), transparent);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative mx-auto max-w-6xl px-6 py-20 md:px-8 md:py-28">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sea">Services</p>
+        <h2 class="mt-3 max-w-2xl font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          What C-TECH provides.
+        </h2>
+        <p class="mt-4 max-w-xl text-lg text-steel">
+          Full ship service covering inspections, docking, repairs, purchasing, and technical support for owners and operators.
+        </p>
+
+        <ul class="mt-14 divide-y divide-ink/10 border-y border-ink/10">
+          {services.map((item) => (
+            <li class="group grid gap-3 py-7 transition sm:grid-cols-[minmax(0,15rem)_1fr] sm:gap-10 md:py-8">
+              <h3 class="font-display text-lg font-bold text-ink group-hover:text-sea sm:text-xl">
+                {item.title}
+              </h3>
+              <p class="max-w-2xl text-base leading-relaxed text-ink-soft/90">
+                {item.text}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section id="approach" class="bg-ink text-foam">
+      <div class="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1fr_1.2fr] md:gap-16 md:px-8 md:py-28">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sea-bright">Approach</p>
+          <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Spec. Yard. Supervise.
+          </h2>
+          <p class="mt-5 text-base leading-relaxed text-white/70 sm:text-lg">
+            From first inspection through repair specification, yard negotiation, and docking supervision - we stay with the vessel until the work is done.
+          </p>
+        </div>
+
+        <ol class="space-y-8 border-l border-white/15 pl-6 md:pl-8">
+          {steps.map((step) => (
+            <li>
+              <span class="font-display text-sm font-bold tracking-[0.18em] text-brass-hot">{step.n}</span>
+              <h3 class="mt-2 font-display text-xl font-bold text-white">{step.title}</h3>
+              <p class="mt-2 max-w-md text-white/65">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative overflow-hidden bg-foam">
+      <div
+        class="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-sea/10 blur-3xl"
+        aria-hidden="true"
+      ></div>
+      <div class="relative mx-auto max-w-6xl px-6 py-20 md:px-8 md:py-28">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sea">Contact</p>
+        <h2 class="mt-3 max-w-xl font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          Need an inspection, dry-dock plan, or repair team?
+        </h2>
+        <p class="mt-4 max-w-lg text-lg text-steel">
+          Tell us vessel type, scope, and timeline - we’ll come back with a clear next step.
+        </p>
+
+        <div class="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:gap-12">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-steel">Email</p>
+            <a href="mailto:ops@c-tech.marine" class="mt-1 block text-lg font-semibold text-ink transition hover:text-sea">
+              ops@c-tech.marine
+            </a>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-steel">Phone</p>
+            <a href="tel:+48123456789" class="mt-1 block text-lg font-semibold text-ink transition hover:text-sea">
+              +48 123 456 789
+            </a>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-steel">Office</p>
+            <p class="mt-1 text-lg font-semibold text-ink">Gdańsk · Maritime Hub</p>
+          </div>
+        </div>
+
+        <a
+          href="mailto:ops@c-tech.marine?subject=Service%20enquiry"
+          class="mt-12 inline-flex bg-ink px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition hover:bg-ink-soft"
+        >
+          Email C-TECH
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-ink/10 bg-mist">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-8 text-sm text-steel md:flex-row md:items-center md:justify-between md:px-8">
+      <p class="font-display font-bold tracking-wide text-ink">C-TECH</p>
+      <p>Full ship service · Inspections · Dry-dock · Repairs</p>
+      <p>© {new Date().getFullYear()} C-TECH. Mock-up.</p>
+    </div>
+  </footer>
 </Layout>

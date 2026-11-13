@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Figtree", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0c1c24;
+  --color-ink-soft: #1a3340;
+  --color-sea: #1f6f78;
+  --color-sea-bright: #2a8f96;
+  --color-foam: #e8f0f2;
+  --color-mist: #f3f7f8;
+  --color-brass: #a67c3a;
+  --color-brass-hot: #c4923f;
+  --color-steel: #5a727c;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background-color: var(--color-mist);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-sea) 35%, white);
+    color: var(--color-ink);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-2%);
+  }
+  to {
+    transform: translateX(2%);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.anim-rise {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-rise-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.anim-rise-delay-2 {
+  animation-delay: 0.24s;
+}
+
+.anim-rise-delay-3 {
+  animation-delay: 0.36s;
+}
+
+.anim-fade {
+  animation: fade-in 1.2s ease both;
+}
+
+.anim-drift {
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.anim-pulse-line {
+  animation: pulse-line 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise,
+  .anim-fade,
+  .anim-drift,
+  .anim-pulse-line {
+    animation: none;
+  }
+}
